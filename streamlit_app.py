@@ -17,10 +17,10 @@ DEFAULT_CLASS_ORDER: List[str] = ["glioma", "notumor", "meningioma", "pituitary"
 TUMOR_GUIDANCE = {
     "glioma": {
         "title": "Glioma / Astrocytoma",
-        "definition": (
+        "definition": [
             "Gliomas are primary brain tumors that begin in the glial support cells and range from slow-growing to "
             "high-grade aggressive lesions."
-        ),
+        ],
         "risk_factors": [
             "Inherited tumor-suppressor syndromes such as Li-Fraumeni or NF1 raise glial mutation risk.",
             "Previous cranial ionizing radiation is strongly associated with high-grade gliomas.",
