@@ -259,6 +259,10 @@ def main() -> None:
     )
 
     st.info(
+        "Use samples from the Brain Tumor MRI dataset—choose any image from its Training or Testing folders, then upload it here for analysis."
+    )
+
+    st.info(
         "Every prediction surfaces tumor-specific definitions, risk factors, care considerations, and trusted sources."
     )
 
