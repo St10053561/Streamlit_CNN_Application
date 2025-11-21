@@ -72,12 +72,7 @@ def ensure_class_cardinality(labels: Sequence[str], target: int) -> List[str]:
 
 def render_predictions(model: tf.keras.Model, image: Image.Image, class_labels: Sequence[str]) -> None:
     target_size = infer_spatial_size(model)
-    batch, resized = prepare_image(image, target_size)
-
-    preview, charts = st.columns([1, 1])
-    with preview:
-        st.image(resized, caption="Uploaded MRI slice", use_column_width=True)
-        st.caption(f"Resized to {target_size[0]}×{target_size[1]} (HxW)")
+    batch, _ = prepare_image(image, target_size)
 
     with st.spinner("Analyzing image..."):
         predictions = model.predict(batch, verbose=0)[0]
@@ -89,8 +84,22 @@ def render_predictions(model: tf.keras.Model, image: Image.Image, class_labels: 
     top_label, top_prob = ranked[0]
     st.success(f"Prediction: **{top_label}** ({top_prob:.1%} confidence)")
 
-    with charts:
-        st.bar_chart({label: prob for label, prob in ranked})
+    st.markdown(
+        "- Model resized the image to "
+        f"{target_size[0]}×{target_size[1]} before inference.\n"
+        "- Softmax probabilities are shown below so you can judge certainty.\n"
+        "- Consider verifying predictions with additional clinical context."
+    )
+
+    st.bar_chart({label: prob for label, prob in ranked})
+
+    st.subheader("Learn more")
+    st.markdown(
+        "- [Brain Tumor Types & Grades (American Brain Tumor Association)](https://www.abta.org/about-brain-tumors/brain-tumor-101/types/).\n"
+        "- [Treatment planning and options (Johns Hopkins Medicine)](https://www.hopkinsmedicine.org/health/conditions-and-diseases/brain-tumor/brain-tumor-treatment).\n"
+        "- [Living with brain tumors: precautions & support (Cancer Research UK)](https://www.cancerresearchuk.org/about-cancer/brain-tumours/living-with).\n"
+        "- [Comprehensive glioma care guide (National Brain Tumor Society)](https://braintumor.org/brain-tumors/types-of-brain-tumors/glioblastoma/)."
+    )
 
 
 def main() -> None:
