@@ -251,6 +251,10 @@ def main() -> None:
     st.title("🧠 Baseline Brain Tumor Detector")
     st.caption("Demonstration-only tool: upload an MRI slice and see how the baseline CNN responds.")
 
+    st.info(
+        "Use samples from the Brain Tumor MRI dataset—choose any image from its Training or Testing folders, then upload it here for analysis."
+    )
+    
     st.markdown(
         "**How it works:**\n"
         "1. Locate a trained model in `models/baseline_cnn_final.keras`.\n"
@@ -258,9 +262,6 @@ def main() -> None:
         "3. Wait a moment for the baseline CNN to estimate the tumor class."
     )
 
-    st.info(
-        "Use samples from the Brain Tumor MRI dataset—choose any image from its Training or Testing folders, then upload it here for analysis."
-    )
 
     st.info(
         "Every prediction surfaces tumor-specific definitions, risk factors, care considerations, and trusted sources."
