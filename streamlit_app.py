@@ -29,12 +29,12 @@ TUMOR_GUIDANCE = {
         ],
         "sources": [
             (
-                "National Brain Tumor Society – Glioma overview",
-                "https://braintumor.org/brain-tumors/types-of-brain-tumors/glioma/",
+                "Mayo Clinic – Glioma overview",
+                "https://www.mayoclinic.org/diseases-conditions/glioma/diagnosis-treatment/drc-20350255",
             ),
             (
-                "NCI – Adult glioma treatment (PDQ)",
-                "https://www.cancer.gov/types/brain/patient/adult-brain-treatment-pdq",
+                "Clever Land Clinic – Adult glioma treatment (PDQ)",
+                "https://my.clevelandclinic.org/health/diseases/21969-glioma",
             ),
         ],
     },
@@ -98,12 +98,8 @@ TUMOR_GUIDANCE = {
         ],
         "sources": [
             (
-                "Cleveland Clinic – Brain MRI: what it shows",
-                "https://my.clevelandclinic.org/health/diagnostics/brain-mri",
-            ),
-            (
-                "NHS – Brain tumour symptoms and red flags",
-                "https://www.nhs.uk/conditions/brain-tumours/symptoms/",
+                "Mayo Clinic – Brain tumour symptoms and red flags",
+                "https://www.mayoclinic.org/diseases-conditions/brain-tumor/diagnosis-treatment/drc-20350088",
             ),
         ],
     },
