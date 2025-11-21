@@ -17,10 +17,10 @@ DEFAULT_CLASS_ORDER: List[str] = ["glioma", "notumor", "meningioma", "pituitary"
 TUMOR_GUIDANCE = {
     "glioma": {
         "title": "Glioma / Astrocytoma",
-        "definition": [
-            "Gliomas are primary brain tumors that begin in the glial support cells and range from slow-growing to "
+        "definition": (
+            "Gliomas are primary brain tumors that begin in glial support cells and range from slow-growing to "
             "high-grade aggressive lesions."
-        ],
+        ),
         "risk_factors": [
             "Inherited tumor-suppressor syndromes such as Li-Fraumeni or NF1 raise glial mutation risk.",
             "Previous cranial ionizing radiation is strongly associated with high-grade gliomas.",
@@ -44,6 +44,10 @@ TUMOR_GUIDANCE = {
     },
     "meningioma": {
         "title": "Meningioma",
+        "definition": (
+            "Meningiomas start in the meninges outside the brain tissue, often benign and slow-growing but able to "
+            "press on the brain or nerves."
+        ),
         "risk_factors": [
             "History of head/neck radiation or dural scarring increases meningeal overgrowth risk.",
             "Neurofibromatosis type 2 (NF2) and TRAF7/KLF4 mutations are common genetic drivers.",
@@ -67,6 +71,10 @@ TUMOR_GUIDANCE = {
     },
     "pituitary": {
         "title": "Pituitary adenoma",
+        "definition": (
+            "Pituitary tumors form in the hormone-regulating pituitary gland and are usually benign but may alter "
+            "hormone levels or press on nearby structures."
+        ),
         "risk_factors": [
             "Family history of MEN1 or familial isolated pituitary adenoma syndromes.",
             "Chronic estrogen/testosterone therapy and endocrine disruptors can stimulate adenoma growth.",
@@ -90,6 +98,10 @@ TUMOR_GUIDANCE = {
     },
     "notumor": {
         "title": "No tumor detected",
+        "definition": (
+            "A 'no tumor' MRI means healthy-appearing brain tissue with no benign or malignant masses disrupting "
+            "structure."
+        ),
         "risk_factors": [
             "AI prediction shows no tumor, yet unresolved headaches, seizures, or deficits still need workup.",
             "Migraines, infections, vascular events, or autoimmune disease can mimic tumor symptoms.",
@@ -109,6 +121,10 @@ TUMOR_GUIDANCE = {
     },
     "default": {
         "title": "Brain tumor overview",
+        "definition": (
+            "Brain tumors are abnormal growths that can arise within brain tissue or nearby structures and may affect "
+            "critical neurologic functions."
+        ),
         "risk_factors": [
             "Previous cranial radiation, immune suppression, and certain hereditary syndromes.",
             "Environmental exposures such as petrochemicals or heavy metals remain under study.",
@@ -192,6 +208,9 @@ def render_guidance(tumor_label: str) -> None:
     info = TUMOR_GUIDANCE.get((tumor_label or "").lower(), TUMOR_GUIDANCE["default"])
 
     st.markdown(f"#### Guidance for {info['title']}")
+    definition = info.get("definition")
+    if definition:
+        st.markdown(f"*{definition}*")
 
     risk_factors = info.get("risk_factors", [])
     if risk_factors:
@@ -240,7 +259,7 @@ def main() -> None:
     )
 
     st.info(
-        "Every prediction surfaces tumor-specific risk factors, care considerations, and credible sources to review with your clinician."
+        "Every prediction surfaces tumor-specific definitions, risk factors, care considerations, and trusted sources."
     )
 
     class_labels = DEFAULT_CLASS_ORDER
@@ -272,4 +291,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
