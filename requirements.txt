@@ -1,21 +1,20 @@
 # Core scientific stack
-numpy
-pandas
-matplotlib
-seaborn
+numpy==1.26.4
+pandas==2.1.4
+matplotlib==3.8.4
+seaborn==0.13.2
 
 # Deep learning + model evaluation
-tensorflow
-tensorflow-io-gcs-filesystem
-scikit-learn
-Pillow
+tensorflow==2.17.0
+scikit-learn==1.5.2
+Pillow==10.4.0
 
 # Distributed processing + parquet helpers
-pyspark
-pyarrow
+pyspark==3.5.3
+pyarrow==16.1.0
 
 # Notebook utilities
-ipython
+ipython==8.26.0
 
 # Web app
-streamlit
+streamlit==1.40.0
