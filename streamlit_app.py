@@ -85,10 +85,9 @@ def render_predictions(model: tf.keras.Model, image: Image.Image, class_labels: 
     st.success(f"Prediction: **{top_label}** ({top_prob:.1%} confidence)")
 
     st.markdown(
-        "- Model resized the image to "
-        f"{target_size[0]}×{target_size[1]} before inference.\n"
-        "- Softmax probabilities are shown below so you can judge certainty.\n"
-        "- Consider verifying predictions with additional clinical context."
+        "- Common risk factors include prior radiation exposure and certain genetic syndromes.\n"
+        "- Typical treatments mix surgery, radiation, and chemotherapy under neuro-oncology care.\n"
+        "- Lifestyle focus: seizure precautions, corticosteroid management, regular neuro follow-ups."
     )
 
     st.bar_chart({label: prob for label, prob in ranked})
@@ -104,7 +103,7 @@ def render_predictions(model: tf.keras.Model, image: Image.Image, class_labels: 
 
 def main() -> None:
     st.title("🧠 Baseline Brain Tumor Detector")
-    st.caption("Upload an MRI slice and let the baseline CNN estimate the tumor type.")
+    st.caption("Demonstration-only tool: upload an MRI slice and see how the baseline CNN responds.")
 
     st.markdown(
         "**How it works:**\n"
