@@ -5,7 +5,6 @@ from pathlib import Path
 from typing import List, Sequence, Tuple
 
 import numpy as np
-import pandas as pd
 from PIL import Image
 import streamlit as st
 import tensorflow as tf
@@ -91,35 +90,26 @@ def render_predictions(model: tf.keras.Model, image: Image.Image, class_labels: 
     st.success(f"Prediction: **{top_label}** ({top_prob:.1%} confidence)")
 
     with charts:
-        df = pd.DataFrame(ranked, columns=["Class", "Probability"])
-        st.bar_chart(df, x="Class", y="Probability")
-
-    with st.expander("Show raw probabilities"):
-        st.json({label: float(prob) for label, prob in ranked})
+        st.bar_chart({label: prob for label, prob in ranked})
 
 
 def main() -> None:
     st.title("🧠 Baseline Brain Tumor Detector")
     st.caption("Upload an MRI slice and let the baseline CNN estimate the tumor type.")
 
-    st.sidebar.header("Model settings")
-    class_text = st.sidebar.text_input(
-        "Class order (CSV)",
-        value=",".join(DEFAULT_CLASS_ORDER),
-        help="Adjust if your baseline model predicts classes in a different order.",
+    st.markdown(
+        "**How it works:**\n"
+        "1. Locate a trained model in `models/baseline_cnn_final.keras`.\n"
+        "2. Upload a single axial MRI slice (JPG or PNG).\n"
+        "3. Wait a moment for the baseline CNN to estimate the tumor class."
     )
-    class_labels = parse_class_labels(class_text)
 
-    st.sidebar.header("Need an image?")
-    st.sidebar.markdown(
-        "Use any T1-weighted slice from the Brain Tumor MRI dataset or your own sample, "
-        "then drag-and-drop it below."
-    )
+    class_labels = DEFAULT_CLASS_ORDER
 
     uploaded = st.file_uploader(
-        "Drop a JPG or PNG MRI image",
+        "Upload a JPG or PNG MRI image",
         type=list(SUPPORTED_IMAGE_TYPES),
-        help="Single axial slice works best.",
+        help="High-contrast brain slices produce the best results.",
     )
 
     try:
