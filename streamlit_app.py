@@ -17,6 +17,10 @@ DEFAULT_CLASS_ORDER: List[str] = ["glioma", "notumor", "meningioma", "pituitary"
 TUMOR_GUIDANCE = {
     "glioma": {
         "title": "Glioma / Astrocytoma",
+        "definition": (
+            "Gliomas are primary brain tumors that begin in the glial support cells and range from slow-growing to "
+            "high-grade aggressive lesions."
+        ),
         "risk_factors": [
             "Inherited tumor-suppressor syndromes such as Li-Fraumeni or NF1 raise glial mutation risk.",
             "Previous cranial ionizing radiation is strongly associated with high-grade gliomas.",
@@ -75,8 +79,8 @@ TUMOR_GUIDANCE = {
         ],
         "sources": [
             (
-                "Pituitary Network Association – Patient resources",
-                "https://pituitary.org/learn/",
+                "Mayo Clinic – About Pituitary",
+                "https://www.mayoclinic.org/diseases-conditions/pituitary-tumors/diagnosis-treatment/drc-20350553",
             ),
             (
                 "Endocrine Society – Pituitary adenoma clinical practice guidance",
