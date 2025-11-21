@@ -1,0 +1,21 @@
+# Core scientific stack
+numpy
+pandas
+matplotlib
+seaborn
+
+# Deep learning + model evaluation
+tensorflow
+tensorflow-io-gcs-filesystem
+scikit-learn
+Pillow
+
+# Distributed processing + parquet helpers
+pyspark
+pyarrow
+
+# Notebook utilities
+ipython
+
+# Web app
+streamlit
